@@ -7,11 +7,18 @@ class SelectorCard extends React.Component {
         this.state = {clicked: false}
     }
 
+    componentDidUpdate() {
+        this.props.recieveData(this.getData());
+    }
+
+    getData() {
+        return(this.props.value + ":" + this.state.clicked);
+    }
+
     render() {
         return (
             <div className={this.state.clicked ? "SelectorCardClicked" : "SelectorCard"} onClick={() =>{
                     this.setState({clicked: !this.state.clicked});
-
                 }}>
                 <div className="inner-SelectorCard">
                     <div className="text">
